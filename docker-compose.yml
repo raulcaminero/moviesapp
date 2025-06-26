@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: movies_user
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: movies_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    depends_on:
+      - db
+    environment:
+      TYPEORM_HOST: db
+      TYPEORM_PORT: 5432
+      TYPEORM_USERNAME: movies_user
+      TYPEORM_PASSWORD: admin123
+      TYPEORM_DATABASE: movies_db
+      TYPEORM_SYNCHRONIZE: "true"
+      API_SECRET: 3f8b2e1c-9d4a-4e2b-8c2e-7f1a2b3c4d5e
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/app
+    command: npm run start
+
+volumes:
+  pgdata:

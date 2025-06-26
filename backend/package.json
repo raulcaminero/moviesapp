@@ -1,0 +1,48 @@
+{
+  "name": "movie-app-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Movie App using NestJS and TypeORM",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "node dist/main.js",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "eslint . --ext .ts",
+    "seed": "ts-node src/seed.ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.4.19",
+    "@nestjs/core": "^10.4.19",
+    "@nestjs/jwt": "^11.0.0",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^10.4.19",
+    "@nestjs/typeorm": "^11.0.0",
+    "bcryptjs": "^3.0.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "dotenv": "^16.5.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "pg": "^8.16.2",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.0.0",
+    "typeorm": "^0.3.25"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.4.9",
+    "@nestjs/testing": "^10.4.19",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^16.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "jest": "^30.0.3",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.5.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

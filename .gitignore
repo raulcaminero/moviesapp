@@ -1,0 +1,32 @@
+# Backend ignores
+backend/node_modules/
+backend/dist/
+backend/coverage/
+backend/build/
+backend/*.log
+backend/.env
+backend/.env.*
+
+# Frontend ignores
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/dist/
+frontend/coverage/
+frontend/build/
+frontend/*.log
+
+# TypeScript cache
+**/*.tsbuildinfo
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Miscellaneous logs
+*.log
