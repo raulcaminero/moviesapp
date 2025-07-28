@@ -27,6 +27,8 @@ export class MoviesController {
 
   @Get(':id/actors')
   async getActorsInMovie(@Param('id') id: number): Promise<Actor[]> {
+    console.log('666666');
+
     const actors = await this.moviesService.getActorsInMovie(Number(id));
     if (!actors) throw new NotFoundException('Movie not found');
     return actors;
@@ -34,6 +36,7 @@ export class MoviesController {
 
   @Get(':id')
   async getMovieById(@Param('id') id: number): Promise<Movie> {
+    console.log('7777777');
     const movie = await this.moviesService.findById(Number(id));
     if (!movie) throw new NotFoundException('Movie not found');
     return movie;
@@ -63,6 +66,8 @@ export class MoviesController {
     @Body() movie: CreateMovieDto
   ): Promise<Movie> {
     const updated = await this.moviesService.update(Number(id), movie);
+    console.log('888888');
+
     if (!updated) throw new NotFoundException('Movie not found');
     return updated;
   }
@@ -71,6 +76,7 @@ export class MoviesController {
   @Delete(':id')
   @UseGuards(ApiKeyGuard)
   async deleteMovie(@Param('id') id: number): Promise<{ deleted: boolean }> {
+    console.log('9999999');
     const result = await this.moviesService.delete(Number(id));
     if (!result.deleted) throw new NotFoundException('Movie not found');
     return result;
@@ -93,6 +99,7 @@ export class MoviesController {
     @Body() ratingDto: CreateRatingDto
   ): Promise<Rating> {
     try {
+      console.log('asdf88888888888888asdf');
       return await this.moviesService.addRating(Number(id), ratingDto);
     } catch (e) {
       if (e instanceof Error) {
@@ -105,8 +112,16 @@ export class MoviesController {
   @Delete('ratings/:ratingId')
   @UseGuards(ApiKeyGuard)
   async deleteRating(@Param('ratingId') ratingId: number) {
+    console.log('555555');
+
     await this.moviesService.deleteRating(Number(ratingId));
     return { deleted: true };
+  }
+
+  @Get('ratings')
+  async getAllRatings(): Promise<Rating[]> {
+    console.log('123123123');
+    return this.moviesService.getAllRatings();
   }
 }
 
@@ -131,6 +146,8 @@ export class ActorsController {
 
   @Get(':id')
   async getActorById(@Param('id') id: number): Promise<Actor> {
+
+    console.log('101010101010101');
     const actor = await this.moviesService.findActorById(Number(id));
     if (!actor) throw new NotFoundException('Actor not found');
     return actor;
@@ -157,6 +174,7 @@ export class ActorsController {
     @Param('id') id: number,
     @Body() actorDto: CreateActorDto
   ): Promise<Actor> {
+    console.log('565656565656');
     const updated = await this.moviesService.updateActor(Number(id), actorDto);
     if (!updated) throw new NotFoundException('Actor not found');
     return updated;

@@ -10,7 +10,7 @@ export class Rating {
   value!: number;
 
   @Column()
-  userName!: string; // Keep only userName
+  userName!: string;
 
   @ManyToOne(() => Movie, movie => movie.ratingsList, { onDelete: 'CASCADE' })
   movie!: Movie;

@@ -172,4 +172,9 @@ export class MoviesService {
   async deleteRating(id: number): Promise<void> {
     await this.ratingsRepository.delete(id);
   }
+
+  async getAllRatings(): Promise<Rating[]> {
+    console.log('asdfasfasdf');
+    return this.ratingsRepository.find({ relations: ['movie'] });
+  }
 }

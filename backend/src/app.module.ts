@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MoviesModule } from './movies/movies.module';
-import { Movie } from './movies/entities/movie.entity'; // <-- Corrected path
+import { Movie } from './movies/entities/movie.entity';
+import { RatingsModule } from './ratings/ratings.module';
 
 @Module({
   imports: [
@@ -17,6 +18,10 @@ import { Movie } from './movies/entities/movie.entity'; // <-- Corrected path
       autoLoadEntities: true,
     }),
     MoviesModule,
+    RatingsModule, // <-- Only import the module!
   ],
+  // Remove these lines:
+  // controllers: [RatingsController],
+  // providers: [RatingsService],
 })
 export class AppModule {}
